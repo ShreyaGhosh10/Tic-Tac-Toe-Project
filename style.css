@@ -1,28 +1,37 @@
+/* Global styles */
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 body{
     background-color: bisque;
     text-align: center;
+    animation: fadeIn 1s ease-in-out;
 }
+
+/* Container styles */
 .container{
-    height: 70vh;  /*viewport height mane jotota area visible hbe oto tar 70%. */
-    display: flex; 
-    
+    height: 70vh;
+    display: flex;
     gap: 1.5vmin;
-    justify-content: center; /*Item gula center theke e start hbe*/
-    align-items: center; /*Sob item center e jbe*/
+    justify-content: center;
+    align-items: center;
 }
+
+/* Game board styling */
 .game{
     height: 60vmin;
-    width: 60vmin; /*60 percent height of the page*/
-    display: flex; /*Mane holo element gulo aktar por akta bosbe*/
-    flex-wrap: wrap; /*wrap text er e moton jaga na thakle next line e transfer korbe box gulo k.*/
+    width: 60vmin;
+    display: flex;
+    flex-wrap: wrap;
     gap: 1.5vmin;
-    justify-content: center; /*Item gula center theke e start hbe*/
-    align-items: center; /*Sob item center e jbe*/
+    justify-content: center;
+    align-items: center;
+    animation: fadeInUp 1s ease-in-out;
 }
+
+/* Box animations */
 .box{
     height: 18vmin;
     width: 18vmin;
@@ -30,34 +39,65 @@ body{
     border: none;
     font-size: 8vmin;
     background-color: aquamarine;
+    transition: transform 0.2s ease-in-out, background-color 0.3s;
 }
-/* .resetcontainer{
-    justify-content: center;
-    align-items: center;
-} */
-.reset{
-    height: 6vmin;
-    width: 18vmin;
-    border-radius: 1.5rem;
-    border: none;
-    font-size: 2vmin;
-    
 
+.box:hover {
+    background-color: lightseagreen;
+    cursor: pointer;
 }
-.new-game{
+
+.box:active {
+    transform: scale(0.9);
+}
+
+/* Winning animation */
+.winning-box {
+    animation: winnerFlash 0.5s ease-in-out infinite alternate;
+}
+
+/* Button styling with animation */
+.reset, .new-game {
     height: 6vmin;
     width: 18vmin;
     border-radius: 1.5rem;
     border: none;
     font-size: 2vmin;
+    transition: transform 0.2s ease-in-out, background-color 0.3s;
 }
-.msg{
-    color: blue;
-    font-size: 5vmin;
+
+.reset:hover, .new-game:hover {
+    background-color: lightcoral;
+    transform: scale(1.1);
+    cursor: pointer;
 }
-.space{
-    height: 2vmin;
+
+/* Fade-in animation */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
-.hide{
-    display: none;
+
+/* Fade-in from below animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
+
+/* Winning box animation */
+@keyframes winnerFlash {
+    from {
+        background-color: yellow;
+    }
+    to {
+        background-color: orange;
+    }
+}
+
+
